@@ -1,17 +1,16 @@
 package com.sharma.vishal.knowYourTeam10.repositories;
 
 import com.sharma.vishal.knowYourTeam10.models.AppUser;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
+import java.util.Optional;
 
 @Repository
-public class AppUserRepository {
+public interface AppUserRepository extends MongoRepository<AppUser, String> {
 
-    public AppUser searchUserById(String userId) {
-        AppUser appUser = new AppUser();
-        appUser.setUserId(userId);
-        appUser.setUsername("harry potter");
-        appUser.setEmail("harryTheSeeker@gryffindor.com");
+    @Override
+    Optional<AppUser> findById(String s);
 
-        return appUser;
-    }
+    @Override
+    AppUser insert(AppUser appUser);
 }

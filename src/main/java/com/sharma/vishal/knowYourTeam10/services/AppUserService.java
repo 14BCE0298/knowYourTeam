@@ -2,6 +2,7 @@ package com.sharma.vishal.knowYourTeam10.services;
 
 import com.sharma.vishal.knowYourTeam10.dtos.AppUserDto;
 import com.sharma.vishal.knowYourTeam10.mappers.AppUserMapper;
+import com.sharma.vishal.knowYourTeam10.models.AppUser;
 import com.sharma.vishal.knowYourTeam10.repositories.AppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,10 @@ public class AppUserService {
     }
 
     public AppUserDto getUserDetails(String userId) {
-        return mapper.toDto(repository.searchUserById(userId));
+        return mapper.toDto(repository.findById(userId).get());
+    }
+
+    public AppUser saveUserDetails(AppUserDto appUserDto) {
+        return repository.insert(mapper.toDocument(appUserDto));
     }
 }

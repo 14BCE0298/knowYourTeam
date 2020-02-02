@@ -11,7 +11,7 @@ public class AppUserMapper {
         AppUserDto appUserDto = new AppUserDto();
         appUserDto.setEmail(appUser.getEmail());
         appUserDto.setUserId(appUser.getUserId());
-        appUserDto.setUsername(appUser.getUsername());
+        appUserDto.setPassword(appUser.getPassword());
 
         return appUserDto;
     }
@@ -20,7 +20,7 @@ public class AppUserMapper {
         AppUser appUser = new AppUser();
         appUser.setEmail(appUserdto.getEmail());
         appUser.setUserId(appUserdto.getUserId());
-        appUser.setUsername(appUserdto.getUsername());
+        appUser.setPassword(appUserdto.getPassword());
 
         return appUser;
     }
