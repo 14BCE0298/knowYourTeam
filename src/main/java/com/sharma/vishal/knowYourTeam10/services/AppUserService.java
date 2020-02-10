@@ -7,6 +7,8 @@ import com.sharma.vishal.knowYourTeam10.repositories.AppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AppUserService {
 
@@ -20,8 +22,8 @@ public class AppUserService {
         this.mapper = mapper;
     }
 
-    public AppUserDto getUserDetails(String userId) {
-        return mapper.toDto(repository.findById(userId).get());
+    public Optional<AppUserDto> getUserDetails(String userId) {
+        return repository.findById(userId).map(mapper::toDto);
     }
 
     public AppUser saveUserDetails(AppUserDto appUserDto) {
